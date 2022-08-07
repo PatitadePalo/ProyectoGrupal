@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block titulo %}
+Foods
+{% endblock %}
+
+{% block contenido_que_cambia %}
+
+
+<div class="card" style="width: 18rem;">
+    <img src="https://www.mdzol.com/u/fotografias/m/2020/10/8/f608x342-966989_996712_0.png" class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title"> {{ food1.name }}</h5>
+        <p class="card-text">Esta plato cuesta {{ food1.price }} , {{ food1.description }} {% if food1.celiac == True %} esto es apto para celiacos.{% else %} esto no es apto para celiacos. {%endif%}
+        </p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+</div>
+
+
+
+
+    {% endblock %}

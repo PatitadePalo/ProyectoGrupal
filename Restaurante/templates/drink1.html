@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block titulo %}
+canelones
+{% endblock %}
+
+{% block contenido_que_cambia %}
+
+
+<div class="card" style="width: 18rem;">
+    <img src="https://www.cocacola.es/content/dam/one/es/es2/coca-cola/products/productos/dic-2021/CC_Origal.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title"> {{ food1.name }}</h5>
+        <p class="card-text">Esta plato cuesta {{ drink1.price }} , {{ drink1.description }} .
+        </p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+</div>
+
+
+
+
+
+    {% endblock %}
