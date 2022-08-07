@@ -18,3 +18,4 @@ class dessert(models.Model):
     description = models.CharField(max_length=200, blank=True, null=True)
     celiac = models.BooleanField()
 
+

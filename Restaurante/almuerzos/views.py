@@ -1,7 +1,10 @@
-from django.shortcuts import render
+from genericpath import exists
+from django.shortcuts import render, redirect
 from almuerzos.models import principal, drink, dessert
 from django.http import HttpResponse
 from multiprocessing import context
+from almuerzos.forms import Formulario_principal
+
 
 
 def food(request):
@@ -13,7 +16,7 @@ def food(request):
         "food2" : food2 ,
         "food3" : food3
     }
-    return render(request, "food1.html", context=context)
+    return render(request, "foods/food1.html", context=context)
 
 
 def soda(request):
@@ -25,7 +28,7 @@ def soda(request):
         "drink2" : drink2,
         "drink3" : drink3
     }
-    return render(request, "drink1.html", context=context)
+    return render(request, "drinks/drink1.html", context=context)
 
 
 def postre(request):
@@ -37,7 +40,7 @@ def postre(request):
         "dessert2" : dessert2 ,
         "dessert3" : dessert3 
     }
-    return render(request, "postre1.html", context=context)
+    return render(request, "desserts/postre1.html", context=context)
 
 
 def foods_list(request):
@@ -46,7 +49,7 @@ def foods_list(request):
     context= {
         "foods": foods
     }
-    return render(request, "foods_list.html", context=context)
+    return render(request, "foods/foods_list.html", context=context)
 
 def drinks_list(request):
 
@@ -54,7 +57,7 @@ def drinks_list(request):
     context= {
         "drinks": drinks
     }
-    return render(request, "drinks_list.html", context=context)
+    return render(request, "drinks/drinks_list.html", context=context)
 
 def desserts_list(request):
 
@@ -62,9 +65,40 @@ def desserts_list(request):
     context= {
         "desserts": desserts
     }
-    return render(request, "desserts_list.html", context=context)
+    return render(request, "desserts/desserts_list.html", context=context)
+
+def create_food(request):
+    if request.method == 'POST':
+        form = Formulario_principal(request.POST)
+        
+
+        if form.is_valid():
+            principal.objects.create(
+                name = form.cleaned_data['name'],
+                price = form.cleaned_data['price'],
+                description = form.cleaned_data['description'],
+                celiac = form.cleaned_data['celiac']
+            )
+            
+            return redirect(foods_list)
+
+    elif request.method == 'GET':
+        form = Formulario_principal()
+        context = {'form':form}
+        return render(request, 'foods/create_food.html', context=context)
 
 
-
-
+def search_food(request):
+     Restaurante = principal.objects.filter(name__icontains=request.GET['search'])
+     if Restaurante.exists():
+          context = {'Restaurante':Restaurante}
+     else:
+         Restaurante = dessert.objects.filter(name__icontains=request.GET['search'])
+     if Restaurante.exists():
+           context = {'Restaurante':Restaurante}
+     else:   
+        Restaurante = drink.objects.filter(name__icontains=request.GET['search'])
+        context={"Restaurante" : Restaurante}
+     search= request.GET["search"]
+     return render(request, "search.html" , context=context )
 
