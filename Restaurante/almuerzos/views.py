@@ -8,7 +8,7 @@ from almuerzos.forms import Formulario_principal
 
 
 def food(request):
-    food1 = principal.objects.create(name= "canelones" , price= 255, description= "Relleno de espinaca y ricota, envuelto en un panqueque.", celiac= True ) 
+    food1 = principal.objects.create(name= "canelones" , price= 255, description= "Relleno de espinaca y ricota, envuelto en un.", celiac= True ) 
     food2 = principal.objects.create(name= "spaghetti" , price= 200, description= "Fideos hechos a base de huevo, ideal para acompañar con distintos tipos de salsas", celiac= False )
     food3 = principal.objects.create(name= "bandeja paisa" , price= 500, description= "Esta comida es deliciosa", celiac= True )
     context = {
@@ -101,3 +101,5 @@ def search_food(request):
      search= request.GET["search"]
      return render(request, "search.html" , context=context )
 
+def inicio(request):
+    return render(request, "inicio.html",context={})
