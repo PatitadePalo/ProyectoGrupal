@@ -8,8 +8,8 @@ from almuerzos.forms import Formulario_principal
 
 
 def food(request):
-    food1 = principal.objects.create(name= "canelones" , price= 250, description= "Esta comida es muy rica", celiac= True ) 
-    food2 = principal.objects.create(name= "spaghetti" , price= 200, description= "Esta comida safa", celiac= False )
+    food1 = principal.objects.create(name= "canelones" , price= 255, description= "Relleno de espinaca y ricota, envuelto en un panqueque.", celiac= True ) 
+    food2 = principal.objects.create(name= "spaghetti" , price= 200, description= "Fideos hechos a base de huevo, ideal para acompañar con distintos tipos de salsas", celiac= False )
     food3 = principal.objects.create(name= "bandeja paisa" , price= 500, description= "Esta comida es deliciosa", celiac= True )
     context = {
         "food1" : food1 , 
@@ -21,7 +21,7 @@ def food(request):
 
 def soda(request):
     drink1 = drink.objects.create(name= "cocacola 250 ml" , price = 150, description="esta coca es rica")
-    drink2 = drink.objects.create(name= "Agua 250 ml" , price = 100, description="es muy sana")
+    drink2 = drink.objects.create(name= "Agua 250 ml" , price = 100, description="es muy sana y rica")
     drink3 = drink.objects.create(name= "Fanta 250 ml" , price = 150, description="esta fanta es rica")
     context = {
         "drink1" : drink1,
@@ -44,7 +44,6 @@ def postre(request):
 
 
 def foods_list(request):
-
     foods = principal.objects.all()
     context= {
         "foods": foods
