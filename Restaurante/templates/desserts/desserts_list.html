@@ -14,7 +14,9 @@ Postres
     <img src="https://img.freepik.com/foto-gratis/surtido-trozos-tarta_114579-30727.jpg?w=2000" class="card-img-top" alt="...">
     <div class="card-body">
         <h5 class="card-title"> {{postre.name}}</h5>
-        <p class="card-text">Esta comida sale {{postre.price}}.
+        <p class="card-text">Este postre cuesta  ${{postre.price}}.
+        <p></p>    {{postre.description}}
+        <p></p> {% if postre.celiac == True %} Es apto para celiacos.{% else %} No es apto para celiacos. {%endif%}
 
     </div>
 </div>

@@ -20,7 +20,7 @@ Comidas
         <div class="card-body">
             <h5 class="card-title"> {{food.name}}</h5>
             <p class="card-text">Este plato cuesta ${{ food.price }}. </p>{{food.description}}
-             {% if food.celiac == True %} Es apto para celiacos.{% else %} No es apto para celiacos. {%endif%}
+            <p></p> {% if food.celiac == True %} Es apto para celiacos.{% else %} No es apto para celiacos. {%endif%}
         </div>
     </div>
 
