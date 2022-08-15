@@ -28,6 +28,7 @@ urlpatterns = [
     path("create_drink/", create_drink, name="create_drink"),
     path("create_dessert/", create_dessert, name="create_dessert"),
     path("search_food/" , search_food , name ="search_food"),
-    path("inicio/", inicio, name= "inicio"),
-    path("agregar_comida/", agregar_comida , name="agregar_comida")
+    path("", inicio, name= "inicio"),
+    path("agregar_comida/", agregar_comida , name="agregar_comida"),
+    
 ]
