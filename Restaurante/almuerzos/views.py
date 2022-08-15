@@ -77,18 +77,19 @@ def create_food(request):
 
 
 def search_food(request):
-     Restaurante = principal.objects.filter(name__icontains=request.GET['search'])
-     if Restaurante.exists():
-          context = {'Restaurante':Restaurante}
+     Restaurante1 = principal.objects.filter(name__icontains=request.GET['search'])
+     if Restaurante1.exists():
+          
+          context = {'Restaurante1':Restaurante1}
      else:
-         Restaurante = dessert.objects.filter(name__icontains=request.GET['search'])
-     if Restaurante.exists():
-           context = {'Restaurante':Restaurante}
+         Restaurante2 = dessert.objects.filter(name__icontains=request.GET['search'])
+     if Restaurante2.exists():
+           context = {'Restaurante2':Restaurante2}
      else:   
-        Restaurante = drink.objects.filter(name__icontains=request.GET['search'])
-        context={"Restaurante" : Restaurante}
+        Restaurante3 = drink.objects.filter(name__icontains=request.GET['search'])
+        context={"Restaurante3" : Restaurante3}
      search= request.GET["search"]
-     return render(request, "search.html" , context=context )
+     return render(request, "search.html" , context=context, )
 
 def inicio(request):
     return render(request, "inicio.html",context={})

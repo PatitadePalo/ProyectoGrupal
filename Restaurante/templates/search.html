@@ -7,23 +7,32 @@ Comidas
 {% endblock %}
 
 {% block contenido_que_cambia %}
-  
-{% for food in Restaurante %}
 
+{% for food in Restaurante %}
+{% if Restaurante1 == True %}    
 <div class="card" style="width: 18rem;">
-    {% if principal.name == canelones %}
-        <img src="https://dam.cocinafacil.com.mx/wp-content/uploads/2015/07/Canelones-de-espinacas-con-Ricotta.jpg" class="card-img-top" alt="...">
-    {% else %}
-        <img src="https://veganwithgusto.com/wp-content/uploads/2021/05/speedy-spaghetti-arrabbiata-featured-e1649949762421.jpg" class="card-img-top" alt="...">
-                   
-    {%endif%}
+
+        <img src="https://dam.cocinafacil.com.mx/wp-content/uploads/2015/07/Canelones-de-espinacas-con-Ricotta.jpg" class="card-img-top" alt="...">            
     <div class="card-body">
         <h5 class="card-title"> {{food.name}}</h5>
-        <p class="card-text">Este plato cuesta ${{ food.price }}. </p>{{food.description}}
-        <p></p> {% if food.celiac == True %} Es apto para celiacos.{% else %} No es apto para celiacos. {%endif%}
+        <p class="card-text">Precio: ${{ food.price }}. </p>{{food.description}}
+        {% if postre.celiac == True %} Es apto para celiacos.{% else %} No es apto para celiacos. {%endif%}     
     </div>
 </div>
 
+{% else %}
+<div class="card" style="width: 18rem;">
+
+    <img src="https://dam.cocinafacil.com.mx/wp-content/uploads/2015/07/Canelones-de-espinacas-con-Ricotta.jpg" class="card-img-top" alt="...">            
+<div class="card-body">
+    <h5 class="card-title"> {{food.name}}</h5>
+    <p class="card-text">Precio: ${{ food.price }}. </p>{{food.description}}
+    
+      
+</div>
+</div>
+
+{% endif %}
     
     {%endfor%}
 
