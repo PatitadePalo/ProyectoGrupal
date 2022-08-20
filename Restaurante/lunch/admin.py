@@ -1,5 +1,5 @@
 from django.contrib import admin
-from almuerzos.models import principal, drink, dessert
+from lunch.models import principal, drink, dessert
 
 @admin.register(principal)
 class principal_admin(admin.ModelAdmin):

@@ -1,10 +1,10 @@
 from genericpath import exists
 from django.shortcuts import render, redirect
-from almuerzos.models import principal, drink, dessert
+from lunch.models import principal, drink, dessert
 from django.http import HttpResponse
 from multiprocessing import context
-from almuerzos.forms import Formulario_principal, Formulario_drink, Formulario_dessert
-
+from lunch.forms import Formulario_principal, Formulario_drink, Formulario_dessert
+from itertools import chain
 
 
 def food(request):
@@ -24,12 +24,12 @@ def soda(request):
     return render(request, "drinks/drink1.html", context=context)
 
 
-def postre(request):
+def sweet_dish(request):
     dessert1= dessert.objects.create(name= "Flan" , price= 250, description= "Esta comida es muy rica", celiac= True )
     context = {
         "dessert1" : dessert1 ,        
     }
-    return render(request, "desserts/postre1.html", context=context)
+    return render(request, "desserts/sweet dish.html", context=context)
 
 
 def foods_list(request):
@@ -77,25 +77,22 @@ def create_food(request):
 
 
 def search_food(request):
-     Restaurante1 = principal.objects.filter(name__icontains=request.GET['search'])
-     if Restaurante1.exists():
-          
-          context = {'Restaurante1':Restaurante1}
-     else:
-         Restaurante2 = dessert.objects.filter(name__icontains=request.GET['search'])
-     if Restaurante2.exists():
-           context = {'Restaurante2':Restaurante2}
-     else:   
-        Restaurante3 = drink.objects.filter(name__icontains=request.GET['search'])
-        context={"Restaurante3" : Restaurante3}
-     search= request.GET["search"]
-     return render(request, "search.html" , context=context, )
+    principal_search= principal.objects.filter(name__icontains=request.GET['search'])
+    drink_search= drink.objects.filter(name__icontains=request.GET['search'])
+    dessert_search  = dessert.objects.filter(name__icontains=request.GET['search'])
 
-def inicio(request):
-    return render(request, "inicio.html",context={})
+    result_list = list(chain(principal_search, drink_search, dessert_search))    
+    
+    context = {'result_list':result_list}
+       
+    search= request.GET["search"]
+    return render(request, "search.html" , context=context, )
 
-def agregar_comida(request):
-    return render(request, "agregar_comida.html",context={})
+def start(request):
+    return render(request, "start.html",context={})
+
+def add_food(request):
+    return render(request, "add_food.html",context={})
 
 def create_drink(request):
     if request.method == 'POST':
@@ -136,3 +133,19 @@ def create_dessert(request):
         form = Formulario_dessert()
         context = {'form':form}
         return render(request, 'desserts/create_dessert.html', context=context)
+
+
+# def search_food2(request):
+#     principal_search= principal.objects.filter(name__icontains=request.GET['search'])
+#     drink_search= drink.objects.filter(name__icontains=request.GET['search'])
+#     dessert_search  = dessert.objects.filter(name__icontains=request.GET['search'])
+
+#     result_list = list(chain(principal_search, drink_search, dessert_search))    
+    
+#     if context = {'result_list':result_list}
+       
+#     search= request.GET["search"]
+#     return render(request, "search.html" , context=context, )
+
+#     else: 
+#     return render(request "search.html, no se encuentra este producto

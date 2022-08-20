@@ -1,0 +1,15 @@
+from django.urls import path
+from lunch.views import food, soda, foods_list, drinks_list, sweet_dish, desserts_list, create_food, create_drink, create_dessert, add_food
+
+urlpatterns = [
+    path("food1/", food , name="food1"),
+    path("drink1/", soda , name = "drink1"),
+    path("foods_list/", foods_list , name="foods_list"),
+    path("drinks_list/", drinks_list , name="drinks_list"),
+    path("sweet_dish/", sweet_dish, name="sweet_dish" ),
+    path("desserts_list/", desserts_list, name="desserts_list"),
+    path("create_food/", create_food , name="create_food" ),
+    path("create_drink/", create_drink, name="create_drink"),
+    path("create_dessert/", create_dessert, name="create_dessert"),
+    path("add_food/", add_food , name="add_food")       
+]
