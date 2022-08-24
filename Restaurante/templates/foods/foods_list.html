@@ -23,6 +23,8 @@ Comidas
             <h5 class="card-title"> {{food.name}}</h5>
             <p class="card-text">Precio: ${{ food.price }}. </p>{{food.description}}
             <p></p> {% if food.celiac == True %} Es apto para celiacos.{% else %} No es apto para celiacos. {%endif%}
+            <br><a href="/lunch/update_food/{{food.id}}/" class="btn btn-primary">UPDATE</a>
+            <a href="#" class="btn btn-danger">DELETE</a>
         </div>
     </div>
 
