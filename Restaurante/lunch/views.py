@@ -135,6 +135,31 @@ def create_dessert(request):
         return render(request, 'desserts/create_dessert.html', context=context)
 
 
+def update_food(request, pk):
+    if request.method == "POST":
+        food = Formulario_principal(request.POST)
+        if form.is_valid():
+            food = principal.objects.get(id=pk)
+            food.name = form.cleaned_data['name']
+            food.price = form.cleaned_data['price']
+            food.description = form.cleaned_data['description']
+            food.celiac = form.cleaned_data['celiac']
+            food.save()
+            
+            return redirect(foods_list)
+
+    elif request.method == "GET":
+        food = principal.objects.get(id=pk)
+
+        form = Formulario_principal(initial={
+                                        "name":food.name, 
+                                        "price":food.price,   
+                                        "description":food.description,
+                                        "celiac":food.celiac})
+        context = {"form":form}
+        return render(request, "lunch/update_food.html", context=context)
+
+
 # def search_food2(request):
 #     principal_search= principal.objects.filter(name__icontains=request.GET['search'])
 #     drink_search= drink.objects.filter(name__icontains=request.GET['search'])
