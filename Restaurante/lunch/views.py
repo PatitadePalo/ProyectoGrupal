@@ -137,7 +137,7 @@ def create_dessert(request):
 
 def update_food(request, pk):
     if request.method == "POST":
-        food = Formulario_principal(request.POST)
+        form = Formulario_principal(request.POST)
         if form.is_valid():
             food = principal.objects.get(id=pk)
             food.name = form.cleaned_data['name']
@@ -157,7 +157,7 @@ def update_food(request, pk):
                                         "description":food.description,
                                         "celiac":food.celiac})
         context = {"form":form}
-        return render(request, "lunch/update_food.html", context=context)
+        return render(request, "foods/update_food.html", context=context)
 
 
 # def search_food2(request):
