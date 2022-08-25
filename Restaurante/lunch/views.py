@@ -159,4 +159,25 @@ def update_food(request, pk):
         context = {"form":form}
         return render(request, "foods/update_food.html", context=context)
 
+def update_drink(request, pk):
+    if request.method == "POST":
+        form = Formulario_drink(request.POST)
+        if form.is_valid():
+            drinks = drink.objects.get(id=pk)
+            drinks.name = form.cleaned_data['name']
+            drinks.price = form.cleaned_data['price']
+            drinks.description = form.cleaned_data['description']
+            drinks.save()
+            
+            return redirect(drinks_list)
+
+    elif request.method == "GET":
+        drinks = drink.objects.get(id=pk)
+
+        form = Formulario_drink(initial={
+                                        "name":drinks.name, 
+                                        "price":drinks.price,   
+                                        "description":drinks.description})
+        context = {"form":form}
+        return render(request, "drinks/update_drink.html", context=context)
 
