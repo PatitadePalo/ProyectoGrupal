@@ -160,17 +160,3 @@ def update_food(request, pk):
         return render(request, "foods/update_food.html", context=context)
 
 
-# def search_food2(request):
-#     principal_search= principal.objects.filter(name__icontains=request.GET['search'])
-#     drink_search= drink.objects.filter(name__icontains=request.GET['search'])
-#     dessert_search  = dessert.objects.filter(name__icontains=request.GET['search'])
-
-#     result_list = list(chain(principal_search, drink_search, dessert_search))    
-    
-#     if context = {'result_list':result_list}
-       
-#     search= request.GET["search"]
-#     return render(request, "search.html" , context=context, )
-
-#     else: 
-#     return render(request "search.html, no se encuentra este producto
