@@ -5,6 +5,7 @@ from django.http import HttpResponse
 from multiprocessing import context
 from lunch.forms import Formulario_principal, Formulario_drink, Formulario_dessert
 from itertools import chain
+from django.contrib.auth.decorators import login_required
 
 
 def food(request):
@@ -55,26 +56,28 @@ def desserts_list(request):
     }
     return render(request, "desserts/desserts_list.html", context=context)
 
+@login_required
 def create_food(request):
-    if request.method == 'POST':
-        form = Formulario_principal(request.POST)
-        
-
-        if form.is_valid():
-            principal.objects.create(
-                name = form.cleaned_data['name'],
-                price = form.cleaned_data['price'],
-                description = form.cleaned_data['description'],
-                celiac = form.cleaned_data['celiac']
-            )
+    if request.user.is_superuser:
+        if request.method == 'POST':
+            form = Formulario_principal(request.POST)
             
-            return redirect(foods_list)
 
-    elif request.method == 'GET':
-        form = Formulario_principal()
-        context = {'form':form}
-        return render(request, 'foods/create_food.html', context=context)
+            if form.is_valid():
+                principal.objects.create(
+                    name = form.cleaned_data['name'],
+                    price = form.cleaned_data['price'],
+                    description = form.cleaned_data['description'],
+                    celiac = form.cleaned_data['celiac']
+                )
+                
+                return redirect(foods_list)
 
+        elif request.method == 'GET':
+            form = Formulario_principal()
+            context = {'form':form}
+            return render(request, 'foods/create_food.html', context=context)    
+    return redirect("login")
 
 def search_food(request):
     principal_search= principal.objects.filter(name__icontains=request.GET['search'])

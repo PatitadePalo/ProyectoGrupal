@@ -10,28 +10,42 @@
         
         {% endblock %}
     </title>
-</head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    </head>
+    
+    <body>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="/">Restaurante</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-      
+    
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="/lunch/foods_list/">Platos Principales <span class="sr-only">(current)</span></a>
+              {% if request.user.is_authenticated and request.user.is_superuser %}
+            <li class="nav-item">
+              <a class="nav-link" href="/lunch/add_food/">Agregar comida/bebida</a>
+            </li>
+            <a class="nav-link" href="/lunch/foods_list/">Platos Principales <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/lunch/drinks_list/">Bebidas</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/lunch/desserts_list/">Postres</a>
+              <a class="nav-link" href="/lunch/desserts_list/" style="margin-right: 30rem ">Postres</a>
+            </li>
+            {% else %}
+            </li>
+            <a class="nav-link" href="/lunch/foods_list/">Platos Principales <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/lunch/add_food/" style= "margin-right: 34rem " >Agregar comida/bebida</a> 
+              <a class="nav-link" href="/lunch/drinks_list/">Bebidas</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/lunch/desserts_list/" style="margin-right: 45rem ">Postres</a>
+            </li>
+            {% endif %}
             {% if request.user.is_authenticated %}
             <li class="nav-item">
               <a class="nav-link" href="/users/logout">Logout</a>
@@ -43,7 +57,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/users/register/">Register</a>
             </li>
-            {% endif %}       
+            {% endif %}
           </ul>
           <form class="form-inline my-2 my-lg-0" action="/search_food/" method="GET">
             <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Buscar" name="search">
