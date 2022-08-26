@@ -97,6 +97,7 @@ def start(request):
 def add_food(request):
     return render(request, "add_food.html",context={})
 
+@login_required
 def create_drink(request):
     if request.method == 'POST':
         form = Formulario_drink(request.POST)
@@ -116,7 +117,7 @@ def create_drink(request):
         context = {'form':form}
         return render(request, 'drinks/create_drink.html', context=context)
 
-
+@login_required
 def create_dessert(request):
     if request.method == 'POST':
         form = Formulario_dessert(request.POST)
@@ -137,7 +138,7 @@ def create_dessert(request):
         context = {'form':form}
         return render(request, 'desserts/create_dessert.html', context=context)
 
-
+@login_required
 def update_food(request, pk):
     if request.method == "POST":
         form = Formulario_principal(request.POST)
@@ -162,6 +163,7 @@ def update_food(request, pk):
         context = {"form":form}
         return render(request, "foods/update_food.html", context=context)
 
+@login_required
 def update_dessert(request, pk):
     if request.method == "POST":
         form = Formulario_dessert(request.POST)
@@ -184,6 +186,7 @@ def update_dessert(request, pk):
         context = {"form":form}
         return render(request, "desserts/update_dessert.html", context=context)
 
+@login_required
 def update_drink(request, pk):
     if request.method == "POST":
         form = Formulario_drink(request.POST)
