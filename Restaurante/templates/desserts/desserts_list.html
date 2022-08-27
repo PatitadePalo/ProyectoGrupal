@@ -18,8 +18,8 @@ Postres
         <p></p>    {{dessert.description}}
         <p></p> {% if dessert.celiac == True %} Es apto para celiacos.{% else %} No es apto para celiacos. {%endif%}
         {% if request.user.is_authenticated and request.user.is_superuser %}
-        <br><a href="/lunch/update_dessert/{{dessert.id}}/" class="btn btn-primary">UPDATE</a>
-        <a href="#" class="btn btn-danger">DELETE</a>
+        <br><a href="/lunch/update_dessert/{{dessert.id}}/" class="btn btn-primary">EDITAR</a>
+        <a href="/lunch/delete_dessert/{{dessert.id}}/" class="btn btn-danger">ELIMINAR</a>
         {% else %}
         {% endif %}
     </div>

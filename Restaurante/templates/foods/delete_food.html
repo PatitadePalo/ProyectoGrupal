@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+Eliminar comida
+{% endblock %}
+
+{% block contenido_que_cambia %}
+
+<p>EL PLATO QUE USTED HA SELECCIONADO PARA ELIMINAR ES EL SIGUIENTE:</p>
+
+<h3>NOMBRE DEL PLATO: {{object.name}}</h3>
+<h5>DESCRIPCION: {{object.description}}</h5>
+<h5>PRECIO: {{object.price}}</h5>
+
+<p>Si está seguro que quiere eliminar la comida seleccionada, pulse el botón 'Eliminar'.</p>
+<form action="" method="POST">
+    {% csrf_token %}
+    <p><input type="submit"value="Eliminar"></p>
+</form>
+
+{% endblock %}

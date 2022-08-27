@@ -17,8 +17,8 @@ Bebidas
             <p class="card-text">Precio: ${{drink.price}}.
             <p></p>     {{drink.description}}
             {% if request.user.is_authenticated and request.user.is_superuser %}
-            <br><a href="/lunch/update_drink/{{drink.id}}/" class="btn btn-primary">UPDATE</a>
-            <a href="#" class="btn btn-danger">DELETE</a>
+            <br><a href="/lunch/update_drink/{{drink.id}}/" class="btn btn-primary">EDITAR</a>
+            <a href="/lunch/delete_drink/{{drink.id}}/" class="btn btn-danger">ELIMINAR</a>
             {% else %}
             {% endif %}
         </div>

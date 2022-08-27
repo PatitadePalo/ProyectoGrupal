@@ -1,4 +1,5 @@
 from genericpath import exists
+from msilib.schema import Class
 from django.shortcuts import render, redirect
 from lunch.models import principal, drink, dessert
 from django.http import HttpResponse
@@ -6,6 +7,7 @@ from multiprocessing import context
 from lunch.forms import Formulario_principal, Formulario_drink, Formulario_dessert
 from itertools import chain
 from django.contrib.auth.decorators import login_required
+from django.views.generic import DeleteView
 
 
 def food(request):
@@ -209,3 +211,18 @@ def update_drink(request, pk):
         context = {"form":form}
         return render(request, "drinks/update_drink.html", context=context)
 
+
+class Delete_food(DeleteView):
+    model = principal
+    template_name = "foods/delete_food.html"
+    success_url = "/lunch/foods_list/"
+
+class Delete_dessert(DeleteView):
+    model = dessert
+    template_name = "desserts/delete_dessert.html"
+    success_url = "/lunch/desserts_list/"
+
+class Delete_drink(DeleteView):
+    model = drink
+    template_name = "drinks/delete_drink.html"
+    success_url = "/lunch/drinks_list/"
