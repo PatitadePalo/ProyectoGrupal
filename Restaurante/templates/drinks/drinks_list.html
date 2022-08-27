@@ -7,7 +7,7 @@ Bebidas
 {% endblock %}
 
 {% block contenido_que_cambia %}
-<div class="d-flex" style="margin-top:2rem; margin-left:7rem"><
+<div class="d-flex" style="margin-top:2rem; margin-left:7rem">
 {% for drink in drinks %}
 
     <div class="card" style="width: 18rem;">
@@ -16,8 +16,11 @@ Bebidas
             <h5 class="card-title"> {{drink.name}}</h5>
             <p class="card-text">Precio: ${{drink.price}}.
             <p></p>     {{drink.description}}
+            {% if request.user.is_authenticated and request.user.is_superuser %}
             <br><a href="/lunch/update_drink/{{drink.id}}/" class="btn btn-primary">UPDATE</a>
             <a href="#" class="btn btn-danger">DELETE</a>
+            {% else %}
+            {% endif %}
         </div>
     </div>
 

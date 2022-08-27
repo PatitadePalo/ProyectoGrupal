@@ -7,7 +7,7 @@ Postres
 {% endblock %}
 
 {% block contenido_que_cambia %} 
-<div class="d-flex" style="margin-top:2rem; margin-left:7rem"><
+<div class="d-flex" style="margin-top:2rem; margin-left:7rem">
 {% for dessert in desserts %}
 
 <div class="card" style="width: 18rem;">
@@ -17,9 +17,11 @@ Postres
         <p class="card-text">Precio ${{ dessert.price }}.
         <p></p>    {{dessert.description}}
         <p></p> {% if dessert.celiac == True %} Es apto para celiacos.{% else %} No es apto para celiacos. {%endif%}
+        {% if request.user.is_authenticated and request.user.is_superuser %}
         <br><a href="/lunch/update_dessert/{{dessert.id}}/" class="btn btn-primary">UPDATE</a>
         <a href="#" class="btn btn-danger">DELETE</a>
-
+        {% else %}
+        {% endif %}
     </div>
 </div>
 
