@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+Eliminar bebida
+{% endblock %}
+
+{% block contenido_que_cambia %}
+
+<p>LA BEBIDA QUE USTED HA SELECCIONADO PARA ELIMINAR ES LA SIGUIENTE:</p>
+
+<h3>NOMBRE DE LA BEBIDA: {{object.name}}</h3>
+<h5>PRECIO: {{object.price}}</h5>
+
+<p>Para eliminar la bebida seleccionada, pulse el botón 'Eliminar'.</p>
+
+<form action="" method="POST">
+    {% csrf_token %}
+    <p><input type="submit"value="Eliminar"></p>
+</form>
+
+{% endblock %}
