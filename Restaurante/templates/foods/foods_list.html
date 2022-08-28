@@ -13,12 +13,7 @@ Comidas
 {% for food in foods %}
 
     <div class="card" style="width: 18rem;">
-        {% if principal.name == canelones %}
-            <img src="https://dam.cocinafacil.com.mx/wp-content/uploads/2015/07/Canelones-de-espinacas-con-Ricotta.jpg" class="card-img-top" alt="...">
-        {% else %}
-            <img src="https://veganwithgusto.com/wp-content/uploads/2021/05/speedy-spaghetti-arrabbiata-featured-e1649949762421.jpg" class="card-img-top" alt="...">
-                       
-        {%endif%}
+        <from  enctype = "multipart/from-data">
         <div class="card-body">
             <h5 class="card-title"> {{food.name}}</h5>
             <p class="card-text">Precio: ${{ food.price }}. </p>{{food.description}}
