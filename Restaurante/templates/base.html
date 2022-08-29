@@ -10,29 +10,54 @@
         
         {% endblock %}
     </title>
-</head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    </head>
+    
+    <body>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="/">Restaurante</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-      
+    
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="/lunch/foods_list/">Platos Principales <span class="sr-only">(current)</span></a>
+              {% if request.user.is_authenticated and request.user.is_superuser %}
+            <li class="nav-item">
+              <a class="nav-link" href="/lunch/add_food/">Agregar comida/bebida</a>
+            </li>
+            <a class="nav-link" href="/lunch/foods_list/">Platos Principales <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/lunch/drinks_list/">Bebidas</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/lunch/desserts_list/">Postres</a>
+              <a class="nav-link" href="/lunch/desserts_list/" style="margin-right: 30rem ">Postres</a>
+            </li>
+            {% else %}
+            </li>
+            <a class="nav-link" href="/lunch/foods_list/">Platos Principales <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/lunch/add_food/">Agregar comida/bebida</a>
+              <a class="nav-link" href="/lunch/drinks_list/">Bebidas</a>
             </li>
-   
+            <li class="nav-item">
+              <a class="nav-link" href="/lunch/desserts_list/" style="margin-right: 45rem ">Postres</a>
+            </li>
+            {% endif %}
+            {% if request.user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="/users/logout">Logout</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="/users/login">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/users/register/">Register</a>
+            </li>
+            {% endif %}
           </ul>
           <form class="form-inline my-2 my-lg-0" action="/search_food/" method="GET">
             <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Buscar" name="search">
@@ -40,20 +65,28 @@
           </form>
         </div>
       </nav>
-
+      <style>
+        body {
+          background-image: url('https://images.pexels.com/photos/326279/pexels-photo-326279.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+          background-repeat: no-repeat;
+          background-attachment: fixed;
+          background-size: 100% 100%;
+        }
+        </style>
 {% block contenido_que_cambia %}
 
 {% endblock %}
 
-<center>
-<footer class="bg-light text-center text-lg-start">
-  <div class="text-center p-3" style="position: absolute; bottom: 0px;background-color: rgba(0, 0, 0, 0.2);">
-    © 2022 Copyright:
-    <a class="text-dark" href="">Restaurante</a>
-      </div>
-      </footer>
-</body>
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
-</html>
-</center>
+<div class="mx-auto" style="width: 200px;">
+  <footer class="bg-light text-center text-lg-start">
+    <div class="text-center p-3" style="position: absolute; left: 0px;width:100% ; bottom: 0px;background-color: rgba(0, 0, 0, 0.2);">
+      © 2022 Copyright:
+      <a class="text-dark" href="">Restaurante</a>
+        </div>
+        </footer>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+  </html>
+</div>
+
