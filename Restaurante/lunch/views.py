@@ -221,6 +221,8 @@ def update_drink(request, pk):
     return redirect("login")
 
 
+<<<<<<< HEAD
+=======
 class Delete_food(DeleteView):
     model = principal
     template_name = "foods/delete_food.html"
@@ -237,3 +239,4 @@ class Delete_drink(DeleteView):
     model = drink
     template_name = "drinks/delete_drink.html"
     success_url = "/lunch/drinks_list/"
+>>>>>>> 1d8dce3c48524ea66e6d58f46761730ae6c9298a

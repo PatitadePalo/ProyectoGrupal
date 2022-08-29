@@ -3,7 +3,7 @@ from lunch.models import principal, drink, dessert
 
 @admin.register(principal)
 class principal_admin(admin.ModelAdmin):
-    list_display = ["name", "price", "description", "celiac"]
+    list_display = ["name", "price", "description", "celiac",]
 
 @admin.register(drink)
 class drink_admin(admin.ModelAdmin):

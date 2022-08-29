@@ -11,9 +11,18 @@ Comidas
 
 {% for food in foods %}
 
+<<<<<<< HEAD
+    <div class="card" style="width: 18rem;">
+        <from  enctype = "multipart/from-data">
+=======
     <div class="card" style="width: 17rem; margin-left:2rem">        
             <img src="https://dam.cocinafacil.com.mx/wp-content/uploads/2015/07/Canelones-de-espinacas-con-Ricotta.jpg" class="card-img-top" alt="...">
+<<<<<<< HEAD
         <div class="card-body" style="background-color:rgba(141, 102, 92);" >
+=======
+>>>>>>> 1d8dce3c48524ea66e6d58f46761730ae6c9298a
+        <div class="card-body">
+>>>>>>> 0224c64ffaf4efa7eb75fc40f3ff8d0a66f9553a
             <h5 class="card-title"> {{food.name}}</h5>
             <p class="card-text">Precio: ${{ food.price }}. </p>{{food.description}}
             <p></p> {% if food.celiac == True %} Es apto para celiacos.{% else %} No es apto para celiacos. {%endif%}
