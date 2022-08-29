@@ -7,23 +7,21 @@ Comidas
 {% endblock %}
 
 {% block contenido_que_cambia %}
-<div class="d-flex" style="margin-top:2rem; margin-left:7rem">
-
+<div   style="margin-top:2rem; margin-left:7rem; margin-bottom:7rem ; display: flex; flex-direction: row; flex-wrap: wrap; max-width: 100vmin;
+min-width: 80vmax">
+        
 {% for food in foods %}
 
 
 
-    <div class="card" style="width: 17rem; margin-left:2rem">        
-            <img src="https://dam.cocinafacil.com.mx/wp-content/uploads/2015/07/Canelones-de-espinacas-con-Ricotta.jpg" class="card-img-top" alt="...">
+<div class="card" style="width: 18rem; margin-left:2rem">
 
-        <div class="card-body" style="background-color:rgba(141, 102, 92);" >
-
-
-        <div class="card-body">
-
-            <h5 class="card-title"> {{food.name}}</h5>
-            <p class="card-text">Precio: ${{ food.price }}. </p>{{food.description}}
-            <p></p> {% if food.celiac == True %} Es apto para celiacos.{% else %} No es apto para celiacos. {%endif%}
+        <img src="https://img.freepik.com/foto-gratis/surtido-trozos-tarta_114579-30727.jpg?w=2000" class="card-img-top" alt="...">
+        <div class="card-body" style="background-color:rgba(141, 102, 92)">
+            <h5 class="card-title"> {{ food.name }}</h5>
+            <p class="card-text">Precio ${{ food.price }}.
+            <p></p>    {{dessert.description}}
+            <p></p> {% if dessert.celiac == True %} Es apto para celiacos.{% else %} No es apto para celiacos. {%endif%}
             {% if request.user.is_authenticated and request.user.is_superuser %}
             <br><a href="/lunch/update_food/{{food.id}}/" class="btn btn-primary">EDITAR</a>
             <a href="/lunch/delete_food/{{food.id}}/" class="btn btn-danger">ELIMINAR</a>
@@ -31,8 +29,7 @@ Comidas
             {% endif %}
         </div>
     </div>
-
-
+    
     
     {%endfor%}
 
