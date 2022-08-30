@@ -6,19 +6,25 @@ Login
 
 {% block contenido_que_cambia %}
 
-<form action="" method="POST">
 {% csrf_token %}
+
+
+<style></style>
+<center>
+    <div style="margin-top:2rem">
+    <form action="" method="POST"  >
 
     <table>
 
-{{form.as_table}}
+  {{form.as_table}} 
 
-    </table>
+</table>
+</div> 
 
     <p><input type="submit"value="Iniciar sesion"></p>
 
     </form>
     
     <p style="color: red;">{{error}} </p>
-
+</center>
 {% endblock %}

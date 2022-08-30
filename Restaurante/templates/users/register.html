@@ -5,7 +5,8 @@ Registro
 {% endblock %}
 
 {% block contenido_que_cambia %}
-
+<center>
+<div style="margin-top:2rem">
 <form action="" method="POST">
 {% csrf_token %}
 
@@ -18,5 +19,5 @@ Registro
     <p><input type="submit"value="Registrate"></p>
 
     </form>
-
+</center>
 {% endblock %}
