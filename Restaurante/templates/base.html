@@ -50,14 +50,14 @@
             {% endif %}
             {% if request.user.is_authenticated %}
             <li class="nav-item">
-              <a class="nav-link" href="/users/logout"style="margin-left: 4rem ">Logout</a>
+              <a class="nav-link" href="/users/logout"style="margin-left: 2rem ">Cerrar sesión</a>
             </li>
             {% else %}
             <li class="nav-item">
-              <a class="nav-link" href="/users/login">Login</a>
+              <a class="nav-link" href="/users/login">Iniciar sesión</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/users/register/">Register</a>
+              <a class="nav-link" href="/users/register/">Crear cuenta</a>
             </li>
             {% endif %}
           

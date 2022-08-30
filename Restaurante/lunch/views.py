@@ -150,13 +150,14 @@ def create_dessert(request):
 def update_food(request, pk):
     if request.user.is_superuser:
         if request.method == "POST":
-            form = Formulario_principal(request.POST)
+            form = Formulario_principal(request.POST, request.FILES)
             if form.is_valid():
                 food = principal.objects.get(id=pk)
                 food.name = form.cleaned_data['name']
                 food.price = form.cleaned_data['price']
                 food.description = form.cleaned_data['description']
                 food.celiac = form.cleaned_data['celiac']
+                food.image = form.cleaned_data ['image']
                 food.save()
                 
                 return redirect(foods_list)
@@ -168,7 +169,8 @@ def update_food(request, pk):
                                             "name":food.name, 
                                             "price":food.price,   
                                             "description":food.description,
-                                            "celiac":food.celiac})
+                                            "celiac":food.celiac,
+                                            "image": food.image})
             context = {"form":form}
             return render(request, "foods/update_food.html", context=context)
     return redirect("login")
@@ -177,12 +179,13 @@ def update_food(request, pk):
 def update_dessert(request, pk):
     if request.user.is_superuser:
         if request.method == "POST":
-            form = Formulario_dessert(request.POST)
+            form = Formulario_dessert(request.POST, request.FILES)
             if form.is_valid():
                 desserts = dessert.objects.get(id=pk)
                 desserts.name = form.cleaned_data['name']
                 desserts.price = form.cleaned_data['price']
                 desserts.description = form.cleaned_data['description']
+                desserts.image = form.cleaned_data ['image']
                 desserts.save()
                 
                 return redirect(desserts_list)
@@ -193,7 +196,8 @@ def update_dessert(request, pk):
             form = Formulario_dessert(initial={
                                             "name":desserts.name, 
                                             "price":desserts.price,   
-                                            "description":desserts.description})
+                                            "description":desserts.description,
+                                            "image":desserts.image})
             context = {"form":form}
             return render(request, "desserts/update_dessert.html", context=context)
     return redirect("login")
@@ -202,12 +206,13 @@ def update_dessert(request, pk):
 def update_drink(request, pk):
     if request.user.is_superuser:
         if request.method == "POST":
-            form = Formulario_drink(request.POST)
+            form = Formulario_drink(request.POST, request.FILES)
             if form.is_valid():
                 drinks = drink.objects.get(id=pk)
                 drinks.name = form.cleaned_data['name']
                 drinks.price = form.cleaned_data['price']
                 drinks.description = form.cleaned_data['description']
+                drinks.image = form.cleaned_data ['image']
                 drinks.save()
                 
                 return redirect(drinks_list)
@@ -218,7 +223,8 @@ def update_drink(request, pk):
             form = Formulario_drink(initial={
                                             "name":drinks.name, 
                                             "price":drinks.price,   
-                                            "description":drinks.description})
+                                            "description":drinks.description,
+                                            "image": drinks.image})
             context = {"form":form}
             return render(request, "drinks/update_drink.html", context=context)
     return redirect("login")
