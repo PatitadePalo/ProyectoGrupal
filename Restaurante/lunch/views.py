@@ -77,7 +77,7 @@ def add_food(request):
 def create_food(request):
     if request.user.is_superuser:
         if request.method == 'POST':
-            form = Formulario_principal(request.POST)
+            form = Formulario_principal(request.POST, request.FILES)
             
 
             if form.is_valid():
@@ -85,7 +85,8 @@ def create_food(request):
                     name = form.cleaned_data['name'],
                     price = form.cleaned_data['price'],
                     description = form.cleaned_data['description'],
-                    celiac = form.cleaned_data['celiac']
+                    celiac = form.cleaned_data['celiac'],
+                    image = form.cleaned_data ['image']
                 )
                 
                 return redirect(foods_list)
@@ -102,14 +103,15 @@ def create_food(request):
 def create_drink(request):
     if request.user.is_superuser:
         if request.method == 'POST':
-            form = Formulario_drink(request.POST)
+            form = Formulario_drink(request.POST, request.FILES)
             
 
             if form.is_valid():
                 drink.objects.create(
                     name = form.cleaned_data['name'],
                     price = form.cleaned_data['price'],
-                    description = form.cleaned_data['description'],                
+                    description = form.cleaned_data['description'],
+                    image = form.cleaned_data ['image'],                
                 )
                 
                 return redirect(drinks_list)
@@ -124,7 +126,7 @@ def create_drink(request):
 def create_dessert(request):
     if request.user.is_superuser:
         if request.method == 'POST':
-            form = Formulario_dessert(request.POST)
+            form = Formulario_dessert(request.POST, request.FILES)
             
 
             if form.is_valid():
@@ -132,7 +134,8 @@ def create_dessert(request):
                     name = form.cleaned_data['name'],
                     price = form.cleaned_data['price'],
                     description = form.cleaned_data['description'],                
-                    celiac = form.cleaned_data['celiac']
+                    celiac = form.cleaned_data['celiac'],
+                    image = form.cleaned_data ['image']
                 )
                 
                 return redirect(desserts_list)

@@ -21,5 +21,5 @@ urlpatterns = [
     path("delete_food/<int:pk>/", Delete_food.as_view() , name= "delete_food"),
     path("delete_dessert/<int:pk>/", Delete_dessert.as_view() , name= "delete_dessert"),
     path("delete_drink/<int:pk>/", Delete_drink.as_view() , name= "delete_drink"),
-
+    
 ]
