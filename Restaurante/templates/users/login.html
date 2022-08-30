@@ -6,7 +6,6 @@ Login
 
 {% block contenido_que_cambia %}
 
-{% csrf_token %}
 
 
 <style></style>
@@ -15,7 +14,7 @@ Login
     <form action="" method="POST"  >
 
     <table>
-
+      {% csrf_token %}
   {{form.as_table}} 
 
 </table>
