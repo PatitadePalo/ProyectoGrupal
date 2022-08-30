@@ -20,8 +20,8 @@ min-width: 80vmax">
         <div class="card-body" style="background-color:rgba(141, 102, 92)">
             <h5 class="card-title"> {{ food.name }}</h5>
             <p class="card-text">Precio ${{ food.price }}.
-            <p></p>    {{dessert.description}}
-            <p></p> {% if dessert.celiac == True %} Es apto para celiacos.{% else %} No es apto para celiacos. {%endif%}
+            <p></p>    {{food.description}}
+            <p></p> {% if food.celiac == True %} Es apto para celiacos.{% else %} No es apto para celiacos. {%endif%}
             {% if request.user.is_authenticated and request.user.is_superuser %}
             <br><a href="/lunch/update_food/{{food.id}}/" class="btn btn-primary">EDITAR</a>
             <a href="/lunch/delete_food/{{food.id}}/" class="btn btn-danger">ELIMINAR</a>
