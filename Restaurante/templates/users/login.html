@@ -8,22 +8,25 @@ Login
 
 
 
-<style></style>
+
+
 <center>
-    <div style="margin-top:2rem">
-    <form action="" method="POST"  >
-
-    <table>
-      {% csrf_token %}
-  {{form.as_table}} 
-
-</table>
-</div> 
-
-    <p><input type="submit"value="Iniciar sesion"></p>
-
-    </form>
+  <div style="margin-top:2rem"></div>
+  
+  <div class="card" style="width: 18rem; ">
     
-    <p style="color: red;">{{error}} </p>
+    <div class="card-body" style="background-color:rgb(167, 164, 40)">
+      <form action="" method="POST"  >            
+      {% csrf_token %}
+      {{form.as_table}} 
+      <p></p>
+      <p><input type="submit"value="Iniciar sesion"></p>
+    </form>
+      <p style="color: red;">{{error}} </p>
+    </div>
+    </div>
+  </div>   
 </center>
+
+
 {% endblock %}
