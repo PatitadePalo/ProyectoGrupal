@@ -14,3 +14,7 @@ class User_registration_form(UserCreationForm):
         fields = ("username", "email", "password1", "password2")
 
         help_texts = { k : "" for k in fields}
+
+
+
+
