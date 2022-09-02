@@ -5,17 +5,17 @@ Eliminar comida
 {% endblock %}
 
 {% block contenido_que_cambia %}
-
+<div class="card-body" style="background-color:rgb(167, 164, 40)">
 <p>EL PLATO QUE USTED HA SELECCIONADO PARA ELIMINAR ES EL SIGUIENTE:</p>
 
-<h3>NOMBRE DEL PLATO: {{object.name}}</h3>
+<h5>NOMBRE DEL PLATO: {{object.name}}.</h5>
 <h5>DESCRIPCION: {{object.description}}</h5>
-<h5>PRECIO: {{object.price}}</h5>
+<h5>PRECIO: $ {{object.price}}</h5>
 
 <p>Si está seguro que quiere eliminar la comida seleccionada, pulse el botón 'Eliminar'.</p>
 <form action="" method="POST">
     {% csrf_token %}
     <p><input type="submit"value="Eliminar"></p>
 </form>
-
+</div>
 {% endblock %}
