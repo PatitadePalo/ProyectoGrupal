@@ -5,12 +5,12 @@ Eliminar postre
 {% endblock %}
 
 {% block contenido_que_cambia %}
-
+<div class="card-body" style="background-color:rgb(167, 164, 40)">
 <p>EL POSTRE QUE USTED HA SELECCIONADO PARA ELIMINAR ES EL SIGUIENTE:</p>
 
-<h3>NOMBRE DEL POSTRE: {{object.name}}</h3>
+<h5>NOMBRE DEL POSTRE: {{object.name}}.</h5>
 <h5>DESCRIPCION: {{object.description}}</h5>
-<h5>PRECIO: {{object.price}}</h5>
+<h5>PRECIO: $ {{object.price}}</h5>
 
 <p>Para eliminar el postre seleccionado, pulse el botón 'Eliminar'.</p>
 
@@ -18,5 +18,5 @@ Eliminar postre
     {% csrf_token %}
     <p><input type="submit"value="Eliminar"></p>
 </form>
-
+</div>
 {% endblock %}

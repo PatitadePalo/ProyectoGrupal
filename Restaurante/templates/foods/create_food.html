@@ -6,6 +6,8 @@ Agregar Comida
 
 {% block contenido_que_cambia %}
 
+<div class="card-body" style="background-color:rgb(134, 133, 32)">
+<h5> INGRESE AQUI LOS DETALLES DE LA NUEVA COMIDA:</h5>
 <form action="" method="POST" enctype="multipart/form-data">
 {% csrf_token %}
 
@@ -16,5 +18,5 @@ Agregar Comida
 </table>
 <p><input type="submit"value="Enviar"></p>
 </form>
-
+</div>
 {% endblock %}

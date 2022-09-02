@@ -5,7 +5,7 @@ Editar comida
 {% endblock %}
 
 {% block contenido_que_cambia %}
-
+<div class="card-body" style="background-color:rgb(134, 133, 32)">
 <form action="" method="POST" enctype="multipart/form-data">
 {% csrf_token %}
 
@@ -16,5 +16,5 @@ Editar comida
 </table>
 <p><input type="submit"value="Enviar"></p>
 </form>
-
+</div>
 {% endblock %}
