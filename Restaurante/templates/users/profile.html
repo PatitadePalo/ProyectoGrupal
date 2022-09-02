@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block titulo %}
+
+Comidas
+
+{% endblock %}
+
+{% block contenido_que_cambia %}
+<center>
+    <div style="margin-top:2rem"></div>
+    
+    <div class="card" style="width: 18rem; ">
+      
+      <div class="card-body" style="background-color:rgb(167, 164, 40)">
+        <img src="{{request.user.profile.image}}">     
+             
+            <p>{{ request.user.profile.user }}</p>
+            Direccion
+            <p>{{ request.user.profile.address }}</p>
+            Telefono:
+            {{ request.user.profile.phone }}
+        
+      </div>
+      </div>
+    </div>   
+  </center>
+        
+
+     
+     
+    
+    
+    {% endblock %}

@@ -1,3 +1,4 @@
+from re import template
 from django.urls import path
 from users.views import login_request, register, show_profile
 from django.contrib.auth.views import LogoutView

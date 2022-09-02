@@ -50,6 +50,9 @@
             {% endif %}
             {% if request.user.is_authenticated %}
             <li class="nav-item">
+              <a class="nav-link" href="/users/profile/">Perfil</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="/users/logout"style="margin-left: 2rem ">Cerrar sesión</a>
             </li>
             {% else %}

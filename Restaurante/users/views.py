@@ -3,7 +3,9 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
+from users.models import User_profile
 from users.forms import User_registration_form
+from django.contrib.auth.models import User
 
 
 def login_request(request):
@@ -42,8 +44,8 @@ def register(request):
         form = User_registration_form()
         return render(request, "users/register.html", {"form" : form})
 
+
 def show_profile(request):
-    if  request.user.is_authenticated:
-        return HttpResponse(request.user.profile.phone)
+    if  request.user.is_authenticated:   
 
-
+        return render(request, "users/profile.html")
