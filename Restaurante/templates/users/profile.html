@@ -14,13 +14,13 @@ Comidas
       
       <div class="card-body" style="background-color:rgb(167, 164, 40)">
         <img src="{{user.profile.image.url}}" style="width: 14rem">     
-        
+          
             <h2><p>{{ request.user.profile.user }}</p></h2>
             Direccion:
             <p>{{ request.user.profile.address }}</p>
             Telefono:
             <p>{{ request.user.profile.phone }}</p>
-        
+            <br><a href="/users/edit_profile/" class="btn btn-primary">EDITAR</a>
       </div>
       </div>
     </div>   

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+Editar perfil
+{% endblock %}
+
+{% block contenido_que_cambia %}
+<center>
+    <div style="margin-top:2rem"></div>
+    <div class="card" style="width: 28rem; ">
+<div class="card-body" style="background-color:rgb(134, 133, 32)">
+    
+    <form action="" method="POST" enctype="multipart/form-data">
+{% csrf_token %}
+
+<table>
+
+{{myform.as_table}}
+
+</table>
+<p><input type="submit"value="Enviar"></p>
+</form>
+</div>
+</div>
+</center>
+{% endblock %}
+
+     
+     
+    
+    

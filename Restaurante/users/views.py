@@ -1,11 +1,16 @@
+from ast import USub
 from multiprocessing import context
+from tkinter.tix import Form
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
-from users.models import User_profile
-from users.forms import User_registration_form
-from django.contrib.auth.models import User
+from users.forms import User_edit_form
+from django.contrib.auth.decorators import login_required
+
+from users.models import User_profile 
+from users.forms import User_registration_form 
+ 
 
 
 def login_request(request):
@@ -49,3 +54,29 @@ def show_profile(request):
     if  request.user.is_authenticated:   
 
         return render(request, "users/profile.html")
+
+@login_required
+def update_profile(request):
+    usuario = request.user
+    if request.method == "POST":
+        myform = User_edit_form(request.POST)
+        
+        if myform.is_valid():
+            info = myform.cleaned_data
+            
+            
+            usuario.email = info["email"]
+            usuario.phone = info["phone"]
+            usuario.address = info ["address"]                   
+            usuario.save()
+            
+            return render(request, "users/profile.html")
+
+    elif request.method == "GET":
+        
+        myform = User_edit_form(initial={
+            "email" : usuario.email                
+            
+        })
+    
+    return render(request, "users/edit_profile.html", {"myform": myform})
