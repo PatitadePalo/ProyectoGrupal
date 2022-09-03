@@ -247,3 +247,7 @@ class Delete_drink(DeleteView):
     model = drink
     template_name = "drinks/delete_drink.html"
     success_url = "/lunch/drinks_list/"
+
+
+def about_us(request):
+    return render(request, "about_us.html",context={})

@@ -57,25 +57,48 @@ def show_profile(request):
 
 @login_required
 def update_profile(request):
-    usuario = request.user
+    usuario = request.user.profile
     if request.method == "POST":
         myform = User_edit_form(request.POST)
         
-        if myform.is_valid():
-            info = myform.cleaned_data
-            
-            
-            usuario.email = info["email"]
-            usuario.phone = info["phone"]
-            usuario.address = info ["address"]                   
+        if myform.is_valid():                                    
+            usuario.email = myform.cleaned_data["email"]
+            usuario.phone = myform.cleaned_data["phone"]
+            usuario.address = myform.cleaned_data["address"]                   
             usuario.save()
             
             return render(request, "users/profile.html")
 
-    elif request.method == "GET":
+    else:
         
         myform = User_edit_form(initial={
-            "email" : usuario.email                
+                          
             })
     
     return render(request, "users/edit_profile.html", {"myform": myform})
+
+
+# @login_required
+# def update_profile(request):
+#     usuario = request.user
+#     if request.method == "POST":
+#         myform = User_edit_form(request.POST)
+        
+#         if myform.is_valid():
+#             info = myform.cleaned_data
+            
+            
+#             usuario.email = info["email"]
+#             usuario.phone = info["phone"]
+#             usuario.address = info ["address"]                   
+#             usuario.save()
+#             print(usuario.phone)
+#             return render(request, "users/profile.html")
+
+#     else:
+        
+#         myform = User_edit_form(initial={
+#             "email" : usuario.email                
+#             })
+    
+#     return render(request, "users/edit_profile.html", {"myform": myform})

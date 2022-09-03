@@ -16,7 +16,7 @@ class User_registration_form(UserCreationForm):
 
         help_texts = { k : "" for k in fields}
 
-class User_edit_form(forms.ModelForm):
+class User_edit_form(UserCreationForm):
     email =forms.EmailField(label = "Modificar E-mail")
     phone = forms.CharField(max_length=20, label = "Modificar Teléfono")
     address = forms.CharField(max_length=200, label = "Modificar dirección")
