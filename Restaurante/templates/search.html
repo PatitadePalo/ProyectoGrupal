@@ -2,7 +2,7 @@
 
 {% block titulo %}
 
-Busqueda
+Busque da
 
 {% endblock %}
 
@@ -14,8 +14,7 @@ Busqueda
 
 
 {% for result in result_list %}
-   
-<div class="card" style="width: 18rem;; margin-left:2rem">
+<div class="card" style="width: 18rem;; margin-left:2rem;background-color:rgba(141, 102, 92)">
 
         <img src="https://dam.cocinafacil.com.mx/wp-content/uploads/2015/07/Canelones-de-espinacas-con-Ricotta.jpg" class="card-img-top" alt="...">            
     <div class="card-body">
@@ -24,7 +23,6 @@ Busqueda
         <p></p>{% if postre.celiac == True %} Es apto para celiacos.{% else %} No es apto para celiacos. {%endif%}     
     </div>
 </div>
-       
 </div>
 </div>
 {%endfor%}

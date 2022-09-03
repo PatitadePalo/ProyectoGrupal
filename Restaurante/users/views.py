@@ -76,7 +76,6 @@ def update_profile(request):
         
         myform = User_edit_form(initial={
             "email" : usuario.email                
-            
-        })
+            })
     
     return render(request, "users/edit_profile.html", {"myform": myform})
