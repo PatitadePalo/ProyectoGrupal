@@ -3,10 +3,14 @@
     - Osvaldo Cano Vásquez
     - Nicolas Monroy
 
-> El proyecto fue iniciado en conjunto vía llamadas de GoogleMeet y para una mayor optimización del tiempo, las últimas tareas fueron divididas entre los integrantes del grupo.
-Nicolas Monroy: Users/profile, mantenimiento front de la web. 
-Nicolas Rodriguez: Funciones sobre los productos (Editar, eliminar)
-Osvaldo Cano Vasquez: Carga de imagenes, creacion de perfiles, about us.
+> El proyecto fue iniciado en conjunto vía llamadas de GoogleMeet y para una mayor optimización del tiempo, las últimas tareas fueron divididas entre los integrantes del grupo.  
+
+Nicolas Monroy: Users/profile, mantenimiento front de la web.  
+
+Nicolas Rodriguez: Funciones sobre los productos (Editar, eliminar)  
+
+Osvaldo Cano Vasquez: Carga de imagenes, creacion de perfiles, about us.  
+
 
 > Fue desarrollado con:
 Python
